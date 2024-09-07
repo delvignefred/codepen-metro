@@ -1,0 +1,190 @@
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Varela&display=swap");
+
+:root {
+  --system-color-dark: oklch(0% 0 0);
+  --system-color-gold: oklch(79.66% 0.074 68.15);
+}
+
+*,
+*::after,
+*::before {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  line-height: calc(1rem * 150%); /* ✑ golden ratio ≈ 161.8% */
+}
+
+body {
+  width: 100dvw;
+  height: 100dvh;
+
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* ✑ text selection disabling */
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  & section {
+    --square-dimensions: 250px;
+    
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: var(--system-color-dark);
+
+    justify-content: center;
+    align-items: center;
+
+    & article {
+      --title-font-style: normal;
+      --title-font-variant: normal;
+      --title-font-weight: 900;
+      --title-font-size: 5rem;
+      --title-line-height: 6rlh;
+      --title-font-family: "Permanent Marker", cursive;
+
+      --sub-title-font-style: normal;
+      --sub-title-font-variant: normal;
+      --sub-title-font-weight: 100;
+      --sub-title-font-size: 1rem;
+      --sub-title-line-height: 1rlh;
+      --sub-title-font-family: "Varela", sans-serif;
+
+      display: flex;
+      flex-direction: column;
+
+      aspect-ratio: 1;
+      inline-size: var(--square-dimensions);
+
+      animation: border 1s linear infinite;
+
+      border-width: min(2px, 0.4dvmin);
+      border-style: solid;
+      border-color: transparent;
+      border-image-slice: 1;
+      background-color: var(--system-color-dark);
+
+      justify-content: center;
+      align-items: center;
+      cursor: default;
+
+      & .title {
+        font: var(--title-font-style) var(--title-font-variant)
+          var(--title-font-weight) var(--title-font-size) /
+          var(--title-line-height) var(--title-font-family);
+        color: transparent;
+
+        background-color: transparent;
+        background: url("https://live.staticflickr.com/65535/52575631966_8efb971b42_o.gif")
+          no-repeat 50% 0 / cover;
+
+        -webkit-background-clip: text;
+        background-clip: text;
+
+        overflow: hidden;
+
+        filter: sepia(1) brightness(2);
+        -webkit-filter: sepia(1) brightness(2);
+      }
+      & .sub-title {
+        font: var(--sub-title-font-style) var(--sub-title-font-variant)
+          var(--sub-title-font-weight) var(--sub-title-font-size) /
+          var(--sub-title-line-height) var(--sub-title-font-family);
+        color: var(--system-color-gold);
+      }
+    }
+  }
+}
+
+/*
+▀▄▀▄▀▄▀▄▀▄▀▄ ANIMATIONS ▀▄▀▄▀▄▀▄▀▄▀▄
+*/
+
+@keyframes border {
+  0%,
+  100% {
+    border-image-source: linear-gradient(
+      0deg,
+      transparent,
+      var(--system-color-gold)
+    );
+  }
+
+  25% {
+    border-image-source: linear-gradient(
+      90deg,
+      transparent,
+      var(--system-color-gold)
+    );
+  }
+
+  50% {
+    border-image-source: linear-gradient(
+      180deg,
+      transparent,
+      var(--system-color-gold)
+    );
+  }
+
+  75% {
+    border-image-source: linear-gradient(
+      270deg,
+      transparent,
+      var(--system-color-gold)
+    );
+  }
+}
+
+/*** ◰ media queries ***/
+/** HD screens and Full HD **/
+@media screen and (width > 1280px) {
+  body {
+    & section {
+      & article {
+        inline-size: calc(var(--square-dimensions) * 2);
+        & .title {
+          font: var(--title-font-style) var(--title-font-variant)
+            var(--title-font-weight) calc(var(--title-font-size) * 2) /
+            calc(var(--title-line-height) * 2) var(--title-font-family);
+        }
+        & .sub-title {
+          font: var(--sub-title-font-style) var(--sub-title-font-variant)
+            var(--sub-title-font-weight) calc(var(--sub-title-font-size) * 2) /
+            calc(var(--sub-title-line-height) * 2) var(--sub-title-font-family);
+        }
+      }
+    }
+  }
+}
+
+/** 4K Ultra HD and more **/
+@media screen and (width > 1920px) {
+  body {
+    & section {
+      & article {
+        inline-size: calc(var(--square-dimensions) * 4);
+        & .title {
+          font: var(--title-font-style) var(--title-font-variant)
+            var(--title-font-weight) calc(var(--title-font-size) * 4) /
+            calc(var(--title-line-height) * 4) var(--title-font-family);
+        }
+        & .sub-title {
+          font: var(--sub-title-font-style) var(--sub-title-font-variant)
+            var(--sub-title-font-weight) calc(var(--sub-title-font-size) * 4) /
+            calc(var(--sub-title-line-height) * 4) var(--sub-title-font-family);
+        }
+      }
+    }
+  }
+}
