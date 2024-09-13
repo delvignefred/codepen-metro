@@ -31,7 +31,7 @@ body {
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
-
+  
   overflow: hidden;
 
   & section {
@@ -40,8 +40,8 @@ body {
     display: flex;
     flex-direction: column;
 
-    width: inherit;
-    height: inherit;
+    inline-size: inherit;
+    block-size: inherit;
 
     background-color: var(--system-color-dark);
 
